@@ -31,3 +31,42 @@
     transform: rotate(360deg);
   }
 }
+
+svg {
+  visibility: hidden;
+}
+body {
+  background-color: #ffcc66;
+}
+
+.Logos {
+  height: 60px;
+  width: 5%;
+}
+input[type="checkbox"] {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.Keyboard-intro {
+  text-align: center;
+}
+.Sequncer-title {
+  text-align: center;
+}
+.Keyboard-title {
+  text-align: center;
+}
+.status {
+  text-align: center;
+}
+.Keyboard-select {
+  position: absolute;
+  float: 30px;
+}
+.midi-sounds {
+  height: 30px;
+  width: 30px;
+  color: red;
+}
