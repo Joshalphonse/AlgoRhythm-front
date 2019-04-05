@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import Bpm from "../Components/Bpm";
 
 import "../App.css";
 import MIDISounds from "midi-sounds-react";
@@ -84,16 +85,16 @@ class Sequncer extends Component {
           true,
           false
         ]
-      ]
+      ],
+      bpm: 120
     };
     this.state.data = [];
     this.beats = [];
-    this.bpm = 120;
   }
   componentDidMount() {
     this.setState({ initialized: true });
   }
-  onSelectDrumSnare(e) {
+  onSelectDrumSnare = e => {
     var list = e.target;
     var n = list.options[list.selectedIndex].getAttribute("value");
     this.midiSounds.cacheDrum(n);
@@ -104,8 +105,8 @@ class Sequncer extends Component {
       });
       me.fillBeat();
     });
-  }
-  onSelectDrumBass(e) {
+  };
+  onSelectDrumBass = e => {
     var list = e.target;
     var n = list.options[list.selectedIndex].getAttribute("value");
     this.midiSounds.cacheDrum(n);
@@ -116,8 +117,8 @@ class Sequncer extends Component {
       });
       me.fillBeat();
     });
-  }
-  onSelectDrumHiHat(e) {
+  };
+  onSelectDrumHiHat = e => {
     var list = e.target;
     var n = list.options[list.selectedIndex].getAttribute("value");
     this.midiSounds.cacheDrum(n);
@@ -128,8 +129,8 @@ class Sequncer extends Component {
       });
       me.fillBeat();
     });
-  }
-  onSelectDrumClap(e) {
+  };
+  onSelectDrumClap = e => {
     var list = e.target;
     var n = list.options[list.selectedIndex].getAttribute("value");
     this.midiSounds.cacheDrum(n);
@@ -140,7 +141,7 @@ class Sequncer extends Component {
       });
       me.fillBeat();
     });
-  }
+  };
   createSelectItems() {
     if (this.midiSounds) {
       if (!this.items) {
@@ -184,7 +185,7 @@ class Sequncer extends Component {
   }
   playLoop = () => {
     this.fillBeat();
-    this.midiSounds.startPlayLoop(this.beats, 80, 1 / 16);
+    this.midiSounds.startPlayLoop(this.beats, this.state.bpm, 1 / 16);
   };
   stopLoop = () => {
     this.midiSounds.stopPlayLoop();
@@ -195,20 +196,28 @@ class Sequncer extends Component {
     this.setState({ tracks: a });
     this.fillBeat();
   }
+
+  BpmHandler = e => {
+    console.log(e.target.value);
+    this.setState({
+      bpm: e.target.value
+    });
+  };
+
   render() {
     return (
       <div className="Sequncer">
         <header className="Sequncer-header">
           <h1 className="Sequncer-title">DRUM SEQUNCER</h1>
         </header>
-        <p className="Sequncer-intro">Define beat and press Play.</p>
+
         <table align="center">
           <tbody>
             <tr>
               <td>
                 <select
                   value={this.state.drumBass}
-                  onChange={this.onSelectDrumBass.bind(this)}
+                  onChange={this.onSelectDrumBass}
                 >
                   {this.createSelectItems()}
                 </select>
@@ -330,7 +339,7 @@ class Sequncer extends Component {
               <td>
                 <select
                   value={this.state.drumSnare}
-                  onChange={this.onSelectDrumSnare.bind(this)}
+                  onChange={this.onSelectDrumSnare}
                 >
                   {this.createSelectItems()}
                 </select>
@@ -452,7 +461,7 @@ class Sequncer extends Component {
               <td>
                 <select
                   value={this.state.drumClap}
-                  onChange={this.onSelectDrumClap.bind(this)}
+                  onChange={this.onSelectDrumClap}
                 >
                   {this.createSelectItems()}
                 </select>
@@ -574,7 +583,7 @@ class Sequncer extends Component {
               <td>
                 <select
                   value={this.state.drumHiHat}
-                  onChange={this.onSelectDrumHiHat.bind(this)}
+                  onChange={this.onSelectDrumHiHat}
                 >
                   {this.createSelectItems()}
                 </select>
@@ -694,11 +703,21 @@ class Sequncer extends Component {
             </tr>
           </tbody>
         </table>
-        <p>
+        <div>
+          BPM:
+          <input
+            onChange={this.BpmHandler}
+            className="Bpm"
+            type="number"
+            name="Bpm"
+            value={this.state.bpm}
+          />
+        </div>
+        <div className="div-button">
           <button onClick={this.playLoop}>Play loop</button>
           <button onClick={this.stopLoop}>Stop loop</button>
-        </p>
-        <p>Component</p>
+        </div>
+
         <div className="midi-sounds">
           <MIDISounds
             className="midi-sounds"

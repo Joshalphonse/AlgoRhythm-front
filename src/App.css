@@ -64,9 +64,12 @@ input[type="checkbox"] {
 .Keyboard-select {
   position: absolute;
   float: 30px;
+  margin: 0 auto;
 }
 .midi-sounds {
   height: 30px;
   width: 30px;
   color: red;
+}
+.div-button {
 }
