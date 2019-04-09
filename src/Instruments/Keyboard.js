@@ -47,14 +47,14 @@ class Keyboard extends Component {
     this.envelopes = [];
     this.startListening();
   }
-  onSelectInstrument(e) {
+  onSelectInstrument = e => {
     var list = e.target;
     let n = list.options[list.selectedIndex].getAttribute("value");
     this.setState({
       selectedInstrument: n
     });
     this.midiSounds.cacheInstrument(n);
-  }
+  };
   createSelectItems() {
     if (this.midiSounds) {
       if (!this.items) {
@@ -173,7 +173,7 @@ class Keyboard extends Component {
           <select
             className="Keyboard-select"
             value={this.state.selectedInstrument}
-            onChange={this.onSelectInstrument.bind(this)}
+            onChange={this.onSelectInstrument}
           >
             {this.createSelectItems()}
           </select>
@@ -690,7 +690,6 @@ class Keyboard extends Component {
           </tbody>
         </table>
 
-        <p>Component</p>
         <div className="midi-sounds">
           <MIDISounds
             ref={ref => (this.midiSounds = ref)}
