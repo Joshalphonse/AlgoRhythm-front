@@ -19,7 +19,9 @@ import InstrumentContainer from "./Containers/InstrumentContainer";
 class App extends React.Component {
   componentDidMount = () => {
     let token = localStorage.token;
-    return token ? this.props.checkToken() : this.props.history.push("/login");
+    if (!token) {
+      this.props.history.push("/login");
+    }
   };
 
   render() {

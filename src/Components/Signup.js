@@ -42,13 +42,7 @@ class Signup extends React.Component {
             placeholder="password"
             name="password"
           />
-          <input
-            type="text"
-            value={this.state.password_confirmation}
-            onChange={this.handleChange}
-            placeholder="password_confirmation"
-            name="password_confirmation"
-          />
+
           <input type="submit" value="Submit" />
         </form>
       </div>

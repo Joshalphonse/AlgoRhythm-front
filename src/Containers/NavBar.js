@@ -16,6 +16,12 @@ const NavBar = props => {
           }
         />
       </Link>
+      {props.user.id ? (
+        <Link to="/daw">
+          {" "}
+          <li>Workstation</li>{" "}
+        </Link>
+      ) : null}
 
       <Link to="/signup">
         <li>Sign Up</li>
@@ -34,8 +40,10 @@ const NavBar = props => {
     </ul>
   );
 };
-
+const mapStateToProps = state => {
+  return { user: state.userReducer.user };
+};
 export default connect(
-  null,
+  mapStateToProps,
   { logOut }
 )(withRouter(NavBar));
