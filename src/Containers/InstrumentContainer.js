@@ -9,7 +9,9 @@ class InstrumentContainer extends Component {
     return (
       <div>
         <Sequncer />
-        <Keyboard />
+        <div className="shiv">
+          <Keyboard />
+        </div>
       </div>
     );
   }

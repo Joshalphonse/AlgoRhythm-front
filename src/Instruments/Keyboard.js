@@ -35,20 +35,18 @@ const STYLE = {
 };
 
 class Keyboard extends Component {
-  constructor(props) {
-    super(props);
-    this.midiNotes = [];
-    this.state = {
-      selectedInstrument: 519,
-      status: "?"
-    };
-  }
+  state = {
+    midiNotes: [],
+    selectedInstrument: 519,
+    status: "?"
+  };
+
   componentDidMount() {
     this.envelopes = [];
     this.startListening();
   }
   onSelectInstrument = e => {
-    var list = e.target;
+    let list = e.target;
     let n = list.options[list.selectedIndex].getAttribute("value");
     this.setState({
       selectedInstrument: n
@@ -79,7 +77,7 @@ class Keyboard extends Component {
   }
   keyDown(n, v) {
     this.keyUp(n);
-    var volume = 1;
+    let volume = 1;
     if (v) {
       volume = v;
     }
@@ -116,12 +114,12 @@ class Keyboard extends Component {
     return false;
   }
   midiOnMIDImessage = event => {
-    var data = event.data;
-    var cmd = data[0] >> 4;
-    var channel = data[0] & 0xf;
-    var type = data[0] & 0xf0;
-    var pitch = data[1];
-    var velocity = data[2];
+    let data = event.data;
+    let cmd = data[0] >> 4;
+    let channel = data[0] & 0xf;
+    let type = data[0] & 0xf0;
+    let pitch = data[1];
+    let velocity = data[2];
     switch (type) {
       case 144:
         this.keyDown(pitch, velocity / 127);
@@ -139,9 +137,9 @@ class Keyboard extends Component {
   };
   requestMIDIAccessSuccess = midi => {
     console.log(midi);
-    var inputs = midi.inputs.values();
+    let inputs = midi.inputs.values();
     for (
-      var input = inputs.next();
+      let input = inputs.next();
       input && !input.done;
       input = inputs.next()
     ) {

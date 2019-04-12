@@ -7,6 +7,7 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import user from "./reducers/userReducer";
+import nav from "./reducers/navReducer";
 
 // import { createBrowserHistory } from "history";
 // import { routerMiddleware, ConnectedRouter } from "connected-react-router";
@@ -15,7 +16,8 @@ import * as serviceWorker from "./serviceWorker";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
-  userReducer: user
+  userReducer: user,
+  navReducer: nav
 });
 const store = createStore(
   rootReducer,
