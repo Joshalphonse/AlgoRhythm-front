@@ -17,6 +17,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import SvgIcon from "@material-ui/core/SvgIcon";
 
 import compose from "recompose/compose";
 
@@ -112,6 +113,11 @@ class NavBar extends Component {
               className={classNames(classes.menuButton, open && classes.hide)}
             >
               <MenuIcon />
+              <img
+                className="menuicons"
+                atl=""
+                src={"menu-three-horizontal-lines-symbol.svg"}
+              />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
               AlgoRhythm Digital Audio Workstation
@@ -129,11 +135,11 @@ class NavBar extends Component {
         >
           <div className={classes.drawerHeader}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === "ltr" ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
+              <img
+                className="menuicons"
+                atl=""
+                src={"double-left-chevron.svg"}
+              />
             </IconButton>
           </div>
           <Divider />
