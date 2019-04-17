@@ -177,7 +177,7 @@ class Sequncer extends Component {
     // console.log("state", this.state);
     let newVol = 0.5;
     //set newDrum to default of 21(handClap)
-    let newDrum = 21;
+    let newDrum = Math.floor(Math.random() * 234) + 1;
     this.setState({ pads: [...this.state.pads, newArray] });
     this.state.volume.push(newVol);
     this.state.selectedDrum.push(newDrum);
