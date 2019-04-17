@@ -16,12 +16,7 @@ export class LoadBtn extends React.Component {
       selectedDrums: [130, 125, 145, 140]
     };
   }
-  componentDidUpdate() {
-    this.props.clickPadButtons(
-      this.state.selectedPads,
-      this.state.selectedDrums
-    );
-  }
+
   onOpenModal = () => {
     this.setState({ open: true });
     console.log(this.props.log.id);

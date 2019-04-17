@@ -6,7 +6,7 @@ export default function DeleteBtn(props) {
   return (
     <div className="DeleteBtn">
       <img
-        src={"clear.svg"}
+        src={"eraser.svg"}
         className="deleteIcon"
         alt="clear"
         onClick={() => props.clearRow(props.rowIndex)}

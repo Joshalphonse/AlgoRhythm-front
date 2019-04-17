@@ -2,26 +2,27 @@ import React, { Component } from "react";
 
 import "../App.css";
 import MIDISounds from "midi-sounds-react";
+import { Select } from "semantic-ui-react";
 
 const STYLE = {
   keyWhite: {
     backgroundColor: "#dddddd",
-    width: "0.5cm",
-    height: "0.75cm"
+    width: "1cm",
+    height: "1.5cm"
   },
   keyWhitePress: {
-    backgroundColor: "#ffaaaa",
-    width: "0.5cm",
+    backgroundColor: "#c58fd8",
+    width: "1cm",
     height: "0.75cm"
   },
   keyBlack: {
     backgroundColor: "#333333",
-    width: "0.5cm",
-    height: "0.5cm"
+    width: "1cm",
+    height: "1cm"
   },
   keyBlackPress: {
-    backgroundColor: "#990000",
-    width: "0.5cm",
+    backgroundColor: "#80df82",
+    width: "1cm",
     height: "0.5cm"
   },
   keyNo: {
@@ -167,8 +168,10 @@ class Keyboard extends Component {
         <header className="Keyboard-header" />
         <h1 className="Keyboard-title">MIDI KEYBOARD</h1>
 
+        <div>Instruments</div>
         <p>
           <select
+            size="10"
             className="Keyboard-select"
             value={this.state.selectedInstrument}
             onChange={this.onSelectInstrument}

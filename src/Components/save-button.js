@@ -3,17 +3,13 @@ import Modal from "react-responsive-modal";
 import { connect } from "react-redux";
 
 export class SaveBtn extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-      pads: [],
-      name: "",
-      loaded: true
-    };
-    this.onInputChange = this.onInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  state = {
+    open: false,
+    pads: [],
+    name: "",
+    loaded: true
+  };
+
   componentDidMount() {
     this.setState({ loaded: true });
   }
@@ -27,15 +23,15 @@ export class SaveBtn extends React.Component {
     console.log("open");
     // this.props.onUpdate();
   };
-  onInputChange(event) {
+  onInputChange = event => {
     this.setState({ name: event.target.value });
-  }
-  handleSubmit(event) {
+  };
+  handleSubmit = event => {
     event.preventDefault();
 
     this.setState({ loaded: false });
     this.props.onUpdate();
-  }
+  };
 
   render() {
     const { open } = this.state;

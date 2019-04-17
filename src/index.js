@@ -14,6 +14,19 @@ import nav from "./reducers/navReducer";
 // import createRootReducer from "./Redux/rootReducer";
 import * as serviceWorker from "./serviceWorker";
 
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import purple from "@material-ui/core/colors/purple";
+import green from "@material-ui/core/colors/green";
+const theme = createMuiTheme({
+  palette: {
+    primary: purple,
+    secondary: green
+  },
+  status: {
+    danger: "orange"
+  }
+});
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   userReducer: user,
@@ -27,7 +40,9 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <MuiThemeProvider theme={theme}>
+        <App />
+      </MuiThemeProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

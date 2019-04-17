@@ -13,17 +13,17 @@ class Sequncer extends Component {
     drumHiHat: 35,
     drumClap: 24,
     pads: [
-      [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
-      [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0],
-      [1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+      [0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
     ],
-    bpm: 120,
+    bpm: 108,
     start: 1 / 16,
     numPads: 4,
     playing: false,
     position: 0,
-    selectedDrum: [130, 125, 145, 140],
+    selectedDrum: [5, 46, 145, 35],
     volume: [0.5, 0.5, 0.5, 0.5],
     mute: false,
     open1: false,
@@ -234,7 +234,7 @@ class Sequncer extends Component {
       <div className="main">
         {/* {width <= 600 ? alert('If you are using HyperLoop on a mobile device, please use landscape orientation for the best possible experience') : null} */}
         <div className="App">
-          <h1>AlgoRhythm Sequencer</h1>
+          <h1 className="sequencer-title">AlgoRhythm Sequencer</h1>
           <Pads
             pos={this.state.position}
             pads={this.state.pads}

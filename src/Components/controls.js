@@ -1,13 +1,14 @@
 import React from "react";
+import { Button } from "semantic-ui-react";
 //control buttons
 export default function Controls(props) {
   //alternate between text displaying Pause and Play
   let buttonText = props.playing ? "Pause" : "Play";
   return (
     <div className="controls">
-      <button className="control_buttons" onClick={() => props.togglePlaying()}>
+      <Button className="control_buttons" onClick={() => props.togglePlaying()}>
         {buttonText}
-      </button>
+      </Button>
       <div className="bpm">
         <label>BPM:</label>
         <input
@@ -22,7 +23,7 @@ export default function Controls(props) {
         <output>{props.bpm}</output>
       </div>
       <button className="control_buttons" onClick={() => props.addNewPads()}>
-        +
+        Add Row
       </button>
     </div>
   );

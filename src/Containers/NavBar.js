@@ -25,7 +25,8 @@ const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    flexGrow: 1
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
@@ -46,11 +47,17 @@ const styles = theme => ({
     marginRight: 100
   },
   hide: {
-    display: "none"
+    display: "none",
+    transform: "translateY(-110%)",
+    transition: "transform .5s"
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0
+  },
+  show: {
+    transform: "translateY(0)",
+    transition: "transform .5s"
   },
   drawerPaper: {
     width: drawerWidth
@@ -144,13 +151,13 @@ class NavBar extends Component {
           </div>
           <Divider />
           <List>
-            <ul className="menubar" role="navigation">
+            <li className="menubar" role="navigation">
               <Link to="/home">
                 <img
                   className="Logos"
                   alt=""
                   src={
-                    "https://cdn-images-1.medium.com/max/2600/1*8BCrOic8jIpo284ikA7ZYw.png"
+                    "http://www.algorhythm.tv/wp-content/uploads/2018/01/Logo.png"
                   }
                 />
               </Link>
@@ -170,12 +177,12 @@ class NavBar extends Component {
               <li
                 onClick={() => {
                   localStorage.removeItem("token");
-                  this.props.history.push("/signup");
+                  this.props.history.push("/login");
                 }}
               >
                 <button onClick={() => this.props.logOut()}>Logout</button>
               </li>
-            </ul>
+            </li>
           </List>
           <Divider />
         </Drawer>

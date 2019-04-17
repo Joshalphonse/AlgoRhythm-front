@@ -1,9 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useSpring, animated } from "react-spring";
 
 class Home extends React.Component {
   render() {
-    return <div>Hello, {this.props.user.username}</div>;
+    return (
+      <div>
+        <div>Hello, {this.props.user.username}</div>
+      </div>
+    );
   }
 }
 
