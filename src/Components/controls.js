@@ -12,7 +12,7 @@ export default function Controls(props) {
       <div className="bpm">
         <label>BPM:</label>
         <input
-          type="range"
+          type="number"
           id="bpm"
           min="1"
           max="210"
