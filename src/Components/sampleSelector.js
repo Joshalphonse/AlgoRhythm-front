@@ -43,7 +43,7 @@ class SampleSelector extends React.Component {
         className="selector"
         autoFocus
         value={this.props.selectedDrum}
-        onChange={this.props.onSelectDrum.bind(this)}
+        onChange={this.props.onSelectDrum}
         onBlur={this.close}
       >
         {this.props.createdDrums}
