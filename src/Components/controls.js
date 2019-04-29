@@ -12,6 +12,7 @@ export default function Controls(props) {
       <div className="bpm">
         <label>BPM:</label>
         <input
+          className="bpm-input"
           type="number"
           id="bpm"
           min="1"

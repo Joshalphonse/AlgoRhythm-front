@@ -36,13 +36,13 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <MuiThemeProvider theme={theme}>
+  <MuiThemeProvider theme={theme}>
+    <Provider store={store}>
+      <BrowserRouter>
         <App />
-      </MuiThemeProvider>
-    </BrowserRouter>
-  </Provider>,
+      </BrowserRouter>
+    </Provider>
+  </MuiThemeProvider>,
   document.getElementById("root")
 );
 
