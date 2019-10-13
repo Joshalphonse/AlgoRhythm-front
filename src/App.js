@@ -1,28 +1,49 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch, withRouter } from "react-router-dom";
 
-class App extends Component {
+import "./App.css";
+
+import { connect } from "react-redux";
+import { checkToken } from "./actions/userActions";
+import Home from "./Containers/Home";
+
+import NavBar from "./Containers/NavBar";
+
+import ErrorMessage from "./Components/ErrorMessage";
+import Login from "./Components/Login";
+
+import Signup from "./Components/Signup";
+
+import InstrumentContainer from "./Containers/InstrumentContainer";
+
+class App extends React.Component {
+  componentDidMount = () => {
+    let token = localStorage.token;
+    if (!token) {
+      this.props.history.push("/login");
+    }
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <NavBar />
+        <Switch>
+          <Route exact path="/home" component={Home} />
+
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+
+          <Route exact path="/logout" component={Home} />
+          <Route path="/daw" component={InstrumentContainer} />
+          <Route path="/" component={ErrorMessage} />
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(
+  null,
+  { checkToken }
+)(withRouter(App));
